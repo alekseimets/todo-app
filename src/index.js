@@ -22,18 +22,14 @@ const App = () => {
             const trimmedText = todoText.trim();
 
             if (trimmedText.length > 0) {
-              addTodos([...todos, trimmedText]);
+              addTodo([...todos, trimmedText]);
             };
           }}
         />
 
         <TodoList 
-        savetodos={todos}
-        deleteTodo={(todoIndex) => {
-          const newTodos = todos.filter((_, index) => index !== todoIndex);
-
-          setTodos(newTodos);
-        }}
+        todos={todos}
+        deleteTodo={deleteTodo}
         />
       </div>
     );
