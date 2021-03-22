@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import Typography from '@material-ui/core/Typography';
 import TodoForm from './todoform.js';
 import reportWebVitals from './reportWebVitals';
+import TodoList from './TodoList';
+import './styles.css';
 
 
 const App = () => {
@@ -13,13 +15,22 @@ const App = () => {
           Todos
         </Typography>
 
-        <TodoForm saveToDo={console.warn}/>
+        <TodoForm 
+        
+          saveToDo={(todoText) => {
+            const trimmedText = todoText.trim();
+
+            if (trimmedText.length > 0) {
+              setTodos([...todos, trimmedText]);
+            };
+          }}
+        />
+
+        <TodoList todos={todos}/>
       </div>
     );
 };
 
-
-const rootElement = document.getElementById('root');
-ReactDOM.render(<App />, rootElement);
+ReactDOM.render(<App />, document.querySelector('#root'));
 
 reportWebVitals();

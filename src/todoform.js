@@ -5,7 +5,7 @@ const ToDoForm = ({saveToDo}) => {
   const [value, setValue] = useState('');
 
   return (
-    <form onSubmit={(event) => {event.preventDefault(); saveToDo(value);}}>
+    <form onSubmit={(event) => {event.preventDefault(); saveToDo(value); setValue('');}}>
       <TextField variant="outlined" placeholder="Add todo" margin="normal" onChange={(event) => {setValue(event.target.value);}} value={value}/>
     </form>
   );
