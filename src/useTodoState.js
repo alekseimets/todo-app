@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
-export default (intialValue) => {
-    consr [todos, setTodos] = useState(intialValue)
+export default (initialValue) => {
+  const [todos, setTodos] = useState(initialValue);
 
-    return {
-        todos,
-        addTodo: (todoText) => {
-            setTodos([...todos, todoText]);
-        },
-        deleteTodo: (todoIndex) => {
-            const newTodos = todos.filter((_, index) => index !== todoIndex);
+  return {
+    todos,
+    addTodo: (todoText) => {
+      setTodos([...todos, todoText]);
+    },
+    deleteTodo: (todoIndex) => {
+      const newTodos = todos.filter((_, index) => index !== todoIndex);
 
-            setTodos(newTodos);
-        }
-    };
-    
-}
+      setTodos(newTodos);
+    }
+  };
+};
+

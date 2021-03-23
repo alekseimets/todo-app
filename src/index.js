@@ -1,40 +1,36 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Typography from '@material-ui/core/Typography';
-import TodoForm from './todoform.js';
-import reportWebVitals from './reportWebVitals';
+import TodoForm from './todoform';
 import TodoList from './TodoList';
 import useTodoState from './useTodoState';
 import './styles.css';
 
-
 const App = () => {
-  const [todos, addTodo, deleteTodo] = useTodoState([]);
-    return(
-      <div className="App">
-        <Typography component='h1' variant='h2'>
-          Todos
-        </Typography>
+  const { todos, addTodo, deleteTodo } = useTodoState([]);
 
-        <TodoForm 
-        
-          saveToDo={(todoText) => {
-            const trimmedText = todoText.trim();
+  return (
+    <div className="App">
+      <Typography component="h1" variant="h2">
+        Todos
+      </Typography>
 
-            if (trimmedText.length > 0) {
-              addTodo([...todos, trimmedText]);
-            };
-          }}
-        />
+      <TodoForm
+        saveTodo={(todoText) => {
+          const trimmedText = todoText.trim();
 
-        <TodoList 
-        todos={todos}
-        deleteTodo={deleteTodo}
-        />
-      </div>
-    );
+          if (trimmedText.length > 0) {
+            addTodo(trimmedText);
+          }
+        }}
+      />
+
+      <TodoList todos={todos} deleteTodo={deleteTodo} />
+    </div>
+  );
 };
 
-ReactDOM.render(<App />, document.querySelector('#root'));
+const rootElement = document.getElementById('root');
+ReactDOM.render(<App />, rootElement);
 
-reportWebVitals();
+
